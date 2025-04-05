@@ -10,8 +10,11 @@ def Watson(url):
         elif response.status_code == 404:
             pass
             return False
+        elif response.status_code == 403:
+           pass
+           return False
         else:
-            print(f"---The URL {url} returned status code {response.status_code}.")
+            print(f"---The URL {url} returned status code {response.  status_code}.")
             return False
     except requests.exceptions.RequestException as e:
         print(f"---()Error checking URL: {e}")
@@ -40,7 +43,8 @@ while True:
     "audiomack.com",
     "letterboxd.com",
     "ko-fi.com"
-   ]   
+    
+    ]   
 
     for site in sites:
       
