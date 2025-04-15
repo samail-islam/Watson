@@ -11,18 +11,18 @@ def Watson(url):
             pass
             return False
         elif response.status_code == 403:
-           pass
+           print(f"!!{url} Recognized as bot")
            return False
         else:
             print(f"---The URL {url} returned status code {response.  status_code}.")
             return False
     except requests.exceptions.RequestException as e:
-        print(f"---()Error checking URL: {e}")
+        print("---")
         return False
 
 # Example usage
 while True:
-  try:
+  
     username= input("Watson ")
     sites = [
     "github.com",
@@ -42,15 +42,24 @@ while True:
     "soundcloud.com",
     "audiomack.com",
     "letterboxd.com",
+    "linkedin.com/in",
     "ko-fi.com"
     
+    
     ]   
+    doms =[".com",".net",".org",".blogspot.com",".netlify.app",".glitch. me",".hubspot.com"]
 
     for site in sites:
+      try:
+      	url = "https://" + site.lower() + "/" + username.lower() + "/"
+      	Watson(url)
       
-      url = "https://" + site.lower() + "/" + username.lower() + "/"
-      
-      Watson(url)
-  except:
-    print("error")
+      except:
+      	print("error")
+    for dom in doms:
+      		try:
+      			url =  "https://" + username.lower() + dom
+      			Watson(url)
+      		except:
+      			print("error")
     
