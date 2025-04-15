@@ -1,5 +1,6 @@
 # Watson
 A very simple username searcher tool.<br>
+
 <img src="Assets/20250415_110324.jpg"><br>
 <b>It uses python's <i>requests</i> module to search for usernames on various platforms.
 </b> 
