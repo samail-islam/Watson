@@ -20,10 +20,11 @@ def Watson(url):
         print("---")
         return False
 
-# Example usage
+
 while True:
   
     username= input("Watson ")
+    # add sites for which you want to search
     sites = [
     "github.com",
     "gitlab.com",
@@ -46,8 +47,9 @@ while True:
     "ko-fi.com"
     
     
-    ]   
-    doms =[".com",".net",".org",".blogspot.com",".netlify.app",".glitch. me",".hubspot.com"]
+    ]  
+    # add domains as your wish
+    domains =[".com",".net",".org",".blogspot.com",".netlify.app",".glitch. me",".hubspot.com"]
 
     for site in sites:
       try:
@@ -56,7 +58,7 @@ while True:
       
       except:
       	print("error")
-    for dom in doms:
+    for dom in domains:
       		try:
       			url =  "https://" + username.lower() + dom
       			Watson(url)
