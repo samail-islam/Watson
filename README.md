@@ -6,10 +6,18 @@ A very simple username searcher tool.<br>
 </b> 
 <h2>Usage</h2>
 
-<b>1.</b> Clone this repository to your local machine.<br>
-<b>2.</b> Run the Watson.py file.<br>
-<b>3.</b> Input an username to search.<br>
+<b>1.</b> Fork this repository using the fork button.
+
+<b>2.</b> Clone the forked repository to your local machine using ``git clone`` command.<br>
+
+<b>3.</b> Install required third party module:
+
+```
+pip install requests
+```
+<b>4.</b> Run the Watson.py file.<br>
+<b>5.</b> Input an username to search.<br>
 
 <h2>License</h2>
 
-⚖ This project is licensed under Mozila Public License 2.0
+⚖ This project is licensed under Mozila Public License version 2.0
