@@ -1,67 +1,52 @@
-
 import requests
 
-def Watson(url):
-    try:
-        response = requests.head(url, allow_redirects=True, timeout=5)
-        if response.status_code == 200:
-            print(f"[*]User found on {url}")
-            return True
-        elif response.status_code == 404:
-            pass
+class WatsonScanner:
+    def __init__(self):
+        self.sites = [
+            "github.com", "gitlab.com", "bitbucket.org", "dev.to",
+            "replit.com", "twitter.com", "tiktok.com", "twitch.tv",
+            "kick.com", "dailymotion.com", "medium.com", "dribbble.com",
+            "behance.net", "soundcloud.com", "audiomack.com",
+            "letterboxd.com", "linkedin.com/in", "ko-fi.com"
+        ]
+        self.doms = [
+            ".com", ".net", ".org", ".blogspot.com",
+            ".netlify.app", ".glitch.me", ".hubspot.com"
+        ]
+
+    def check_url(self, url):
+        try:
+            response = requests.head(url, allow_redirects=True, timeout=5)
+            if response.status_code == 200:
+                print(f"[*] User found on {url}")
+                return True
+            elif response.status_code == 404:
+                return False
+            elif response.status_code == 403:
+                print(f"[!!] {url} - Recognized as bot or access forbidden")
+                return False
+            else:
+                print(f"[---] {url} returned status code {response.status_code}")
+                return False
+        except requests.exceptions.RequestException:
             return False
-        elif response.status_code == 403:
-           print(f"!!{url} Recognized as bot")
-           return False
-        else:
-            print(f"---The URL {url} returned status code {response.  status_code}.")
-            return False
-    except requests.exceptions.RequestException as e:
-        print("---")
-        return False
+
+    def scan_username(self):
+        while True:
+            username = input("Watson ").strip().lower()
+            if not username:
+                print("Username cannot be empty.")
+                continue
+
+            for site in self.sites:
+                url = f"https://{site}/{username}/"
+                self.check_url(url)
+
+            for dom in self.doms:
+                url = f"https://{username}{dom}"
+                self.check_url(url)
 
 
-while True:
-  
-    username= input("Watson ")
-    # add sites for which you want to search
-    sites = [
-    "github.com",
-    "gitlab.com",
-    "bitbucket.org",
-    "dev.to",
-    "replit.com",
-    "twitter.com",
-    "tiktok.com",
-    "twitch.tv",
-    "kick.com",
-    "dailymotion.com",
-    "medium.com",
-    "dribbble.com",
-    "behance.net",
-    "artstation.com",
-    "soundcloud.com",
-    "audiomack.com",
-    "letterboxd.com",
-    "linkedin.com/in",
-    "ko-fi.com"
-    
-    
-    ]  
-    # add domains as your wish
-    domains =[".com",".net",".org",".blogspot.com",".netlify.app",".glitch. me",".hubspot.com"]
-
-    for site in sites:
-      try:
-      	url = "https://" + site.lower() + "/" + username.lower() + "/"
-      	Watson(url)
-      
-      except:
-      	print("error")
-    for dom in domains:
-      		try:
-      			url =  "https://" + username.lower() + dom
-      			Watson(url)
-      		except:
-      			print("error")
-    
+if __name__ == "__main__":
+    scanner = WatsonScanner()
+    scanner.scan_username()
