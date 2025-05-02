@@ -1,6 +1,6 @@
 import requests
 
-class WatsonScanner:
+class Watson:
     def __init__(self):
         self.sites = [
             "github.com", "gitlab.com", "bitbucket.org", "dev.to",
@@ -48,5 +48,5 @@ class WatsonScanner:
 
 
 if __name__ == "__main__":
-    scanner = WatsonScanner()
+    scanner = Watson()
     scanner.scan_username()
