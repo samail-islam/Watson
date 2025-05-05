@@ -1,4 +1,5 @@
 import requests
+from colorama import init,Fore,Style 
 
 class Watson:
     def __init__(self):
@@ -18,12 +19,12 @@ class Watson:
         try:
             response = requests.head(url, allow_redirects=True, timeout=5)
             if response.status_code == 200:
-                print(f"[*] User found on {url}")
+                print(Fore.GREEN + f"[*] User found on {url}")
                 return True
             elif response.status_code == 404:
                 return False
             elif response.status_code == 403:
-                print(f"[!!] {url} - Recognized as bot or access forbidden")
+                print(Fore.RED + f"[!!] {url} - Recognized as bot or access forbidden")
                 return False
             else:
                 print(f"[---] {url} returned status code {response.status_code}")
