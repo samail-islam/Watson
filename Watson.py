@@ -1,6 +1,6 @@
 import requests
-from colorama import init,Fore,Style 
-
+from colorama import init,Fore 
+init()
 class Watson:
     def __init__(self):
         self.sites = [
