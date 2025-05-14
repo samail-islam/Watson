@@ -14,6 +14,7 @@ A very simple username searcher tool.<br>
 
 ```
 pip install requests
+pip install colorama
 ```
 <b>4.</b> Run the Watson.py file.<br>
 <b>5.</b> Input an username to search.<br>
